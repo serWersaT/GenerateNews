@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="col-sm-12">
+    <span class="col-sm-12 TextBlock form-control">Генерация фразы</span>
+    <div class="GenerateNewPhrase col-sm-12 row">
+        <textarea rows="5" class="col-sm-12 form-control TextBlock" id="txtGenerateNewPhrase"></textarea>
+        <label>Приоритезировать использование разрешенных для миксования слов</label>
+        <input id="checkOnlyMixPhrase" type="checkbox" class="col-sm-12 form-control">
+        <button class="btn dtn-default col-sm-2" id="btnGenerateNewPhrase" onclick="GetPhrase()">Создать предложение</button>
+        <button class="btn dtn-default col-sm-2" id="btnSaveNewPhrase">Сохнанить предложение</button>
+    </div>
+
+    <span class="col-sm-12 TextBlock form-control">Генерация новостей</span>
+    <div class="GenerateNewPhrase col-sm-12 row">
+        <div class="row">
+            <textarea rows="25" class="col-sm-12 form-control TextBlock" id="txtGenerateNewNews" style="width:100%"></textarea>
+        </div>
+        <div class="row">
+            <label>Тема новости</label>
+            <select id="strGenerateThemesNewsBox" class="ThemesNews col-sm-3"></select>
+        </div>
+        <div class="row">
+            <label>Разрешить генерацию новых схем предложений</label>
+            <input id="newvector" type="checkbox" class="col-sm-6 form-control">
+        </div>
+        <div class="row">
+            <label>Разрешить генерацию новых фраз</label>
+            <input id="newphrases" type="checkbox" class="col-sm-6 form-control">
+        </div>
+        <button class="btn dtn-default col-sm-2" id="btnGenerateNewNews">Создать новость</button>
+        <button class="btn dtn-default col-sm-2" id="btnSaveNewNews">Сохнанить новость</button>
+    </div>
+
+    <span class="col-sm-12 TextBlock form-control">Обучение</span>
+    <div class="LearnBlock col-sm-12 row">
+        <textarea rows="25" class="col-sm-12 form-control TextBlock" id="txtLearn" style="width:100%"></textarea>
+        <select id="strThemesNewsBox" class="ThemesNews col-sm-3"></select>
+        <select id="strEmotionLevelBox" class="EmoutionLevels col-sm-3"></select>
+        <button class="btn dtn-default col-sm-2" id="btnLearnText" onclick="LearnText()">Сохнанить новость</button>
+    </div>
+</div>
+
+

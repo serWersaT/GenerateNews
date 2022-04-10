@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Слова";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>News</h2>
+<div><a href="#" class="aTable" onclick="tgAddTable()">Добавить слова</a></div>
+<div class="tbAddTable" style="display:none">
+    <table>
+        <tr>
+            <td><label>Новость:</label></td>
+            <td><label>Тема новости:</label></td>
+            <td><label>Эмоциональный уровень:</label></td>
+        </tr>
+        <tr>
+            <td><input id="NewsBox" type="text"></td>
+            <td><select id="NewsThemeBox" class="ThemesNews"></select></td>
+
+            <td>
+                <select id="EmoutionBox" class="EmoutionLevels"></select>
+            </td>
+        </tr>
+    </table>
+    <button class="btn btn-default" onclick="InsertNews()">Добавить</button>
+</div>
+
+<div>
+    <label class="cntSelectTable">Всего записей: </label>
+</div>
+<div>
+    <label>Показывать на странице: </label>
+    <select id="RowCount" class="form-control"></select>
+    <br />
+    <table class="table table-inverse" id="NewsTable"></table>
+</div>
+
+
+<div class="popup-fade" style="display:none">
+    <div class="popup">
+        <a class="popup-close" href="#">Закрыть</a><br />
+        <div class="col-sm-12"><label class="col-sm-5 control-label">Новость: </label> <input type="text" class="form-control col-sm-7" id="txtNews"> </div>
+        <div class="col-sm-12"><label class="col-sm-5 control-label">Тема новости: </label> <select id="txtThemeNews" class="form-control col-sm-7 ThemesNews"></select></div>
+        <div class="col-sm-12"><label class="col-sm-5 control-label">Эмоциональный уровень:</label> <select id="txtEmotionLevelNews" class="form-control col-sm-7 EmoutionLevels"></select></div>
+        <div class="col-sm-12"><label class="col-sm-5 control-label">Включено: </label> <input type="checkbox" class="form-control col-sm-7" id="txtActiveNews"></div>
+        <div class="col-sm-12"><button class="btn btn-default col-sm-3" onclick="UpdateNews()">Обновить</button></div>
+    </div>
+</div>
+
+
+<div>
+    <table class="col-sm-12 table table-hover SelectTable" id="NewsSelectTable">
+        <tr>
+            <td><label>№:</label></td>
+            <td><label>Новость:</label></td>
+            <td><label>Тема:</label></td>
+            <td><label>Эмоциональный уровень:</label></td>
+            <td><label>Включено:</label></td>
+        </tr>
+        <tr>
+            <td><input id="RowFind" class="form-control" type="text"></td>
+            <td><input id="NewsFind" class="form-control" type="text"></td>
+            <td><input id="ThemeFind" class="form-control" type="text"></td>
+            <td><input id="EmoutionFind" class="form-control" type="text"></td>
+            <td></td>
+        </tr>
+    </table>
+</div>

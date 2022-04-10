@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Слова";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Phrases</h2>
+<div><a href="#" class="aTable" onclick="tgAddTable()">Добавить слова</a></div>
+<div class="tbAddTable" style="display:none">
+    <table>
+        <tr>
+            <td><label>Предложение:</label></td>
+            <td><label>форма предложения:</label></td>
+            <td><label>Тема  предложения:</label></td>
+            <td><label>Эмоциональный уровень:</label></td>
+            <td><label>Сочетаемые предложения:</label></td>
+            <td><label>Несочетаемые предложения:</label></td>
+        </tr>
+        <tr>
+            <td><input id="PhraseBox" type="text"></td>
+            <td>
+                <select id="TypeBox" class="FormPhrase"></select>
+            </td>
+            <td><input id="PhraseThemeBox" type="text"></td>
+
+            <td>
+                <select id="EmoutionBox" class="EmoutionLevels"></select>
+            </td>
+
+            <td><input id="MixBox" type="text"></td>
+            <td><input id="NotMixBox" type="text"></td>
+        </tr>
+    </table>
+    <button class="btn btn-default" onclick="InsertPhrase()">Добавить</button>
+</div>
+
+<div>
+    <label class="cntSelectTable">Всего записей: </label>
+</div>
+<div>
+    <label>Показывать на странице: </label>
+    <select id="RowCount" class="form-control"></select>
+    <br />
+    <table class="table table-inverse" id="PhraseTable"></table>
+</div>
+
+
+<div class="popup-fade" style="display:none">
+    <div class="popup">
+        <a class="popup-close" href="#">Закрыть</a><br />
+        <div class="col-sm-12"><label class="col-sm-5 control-label">Предложение: </label> <input type="text" class="form-control col-sm-7" id="txtPhrase"> </div>
+        <div class="col-sm-12"><label class="col-sm-5 control-label">форма предложения: </label> <select id="txtFormPhrase" class="form-control col-sm-7 FormPhrase"></select></div>
+        <div class="col-sm-12"><label class="col-sm-5 control-label">Тема  предложения: </label> <input type="text" class="form-control col-sm-7" id="txtThemePhrase"> </div>
+        <div class="col-sm-12"><label class="col-sm-5 control-label">Эмоциональный уровень:</label> <select id="txtEmotionLevelPhrase" class="form-control col-sm-7 EmoutionLevels"></select> </div>
+        <div class="col-sm-12"><label class="col-sm-5 control-label">Сочетаемые предложения: </label> <input type="text" class="form-control col-sm-7" id="txtMixPhrase"> </div>
+        <div class="col-sm-12"><label class="col-sm-5 control-label">Несочетаемые предложения: </label> <input type="text" class="form-control col-sm-7" id="txtNotMixPhrase"></div>
+        <div class="col-sm-12"><label class="col-sm-5 control-label">Активно: </label> <input type="checkbox" class="form-control col-sm-7" id="txtActivePhrase"></div>
+        <div class="col-sm-12"><button class="btn btn-default col-sm-3" onclick="UpdatePhrase()">Обновить</button></div>
+    </div>
+</div>
+
+
+<div>
+    <table class="col-sm-12 table table-hover SelectTable" id="PhraseSelectTable">
+        <tr>
+            <td><label>№:</label></td>
+            <td><label>Предложение:</label></td>
+            <td><label>Форма предложения:</label></td>
+            <td><label>Тема:</label></td>
+            <td><label>Эмоциональный уровень:</label></td>
+            <td><label>Сочетаемые предложения:</label></td>
+            <td><label>Несочетаемые предложения:</label></td>
+            <td><label>Включено:</label></td>
+        </tr>
+        <tr>
+            <td><input id="RowFind" class="form-control" type="text"></td>
+            <td><input id="PhraseFind" class="form-control" type="text"></td>
+            <td><input id="FormFind" class="form-control" type="text"></td>
+            <td><input id="ThemeFind" class="form-control" type="text"></td>
+            <td><input id="EmoutionFind" class="form-control" type="text"></td>
+            <td><input id="MixFind" class="form-control" type="text"></td>
+            <td><input id="NotMixFind" class="form-control" type="text"></td>
+            <td></td>
+        </tr>
+    </table>
+</div>

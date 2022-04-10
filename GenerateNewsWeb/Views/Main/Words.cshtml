@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "Слова";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Word</h2>
+<div><a href="#" class="aTable" onclick="tgAddTable()">Добавить слова</a></div>
+<div class="tbAddTable" style="display:none">
+    <table>
+        <tr>
+            <td><label>Слово:</label></td>
+            <td><label>Тип слова:</label></td>
+            <td><label>Род слова:</label></td>
+            <td><label>Форма слова:</label></td>
+            <td><label>Эмоциональный уровень:</label></td>
+            <td><label>Синонимы:</label></td>
+            <td><label>Сочетаемые слова:</label></td>
+            <td><label>Несочетаемые слова:</label></td>
+        </tr>
+        <tr>
+            <td><input id="WordBox" type="text"></td>
+            <td>
+                <select id="TypeBox" class="TypeWord"></select>
+            </td>
+            <td>
+                <select id="GenderBox" class="GenderWord"></select>
+            </td>
+
+            <td>
+                <select id="FormBox" class="FormsWord"></select>
+            </td>
+
+            <td>
+                <select id="EmoutionBox" class="EmoutionLevels"></select>
+            </td>
+
+
+            <td><input id="SynonimBox" type="text"></td>
+            <td><input id="MixBox" type="text"></td>
+            <td><input id="NotMixBox" type="text"></td>
+        </tr>
+    </table>
+    <button class="btn btn-default" onclick="InsertWord()">Добавить</button>
+</div>
+
+<div>
+    <label class="cntSelectTable">Всего записей: </label>
+</div>
+<div>
+    <label>Показывать на странице: </label>
+    <select id="RowCount" class="form-control"></select>
+    <br />
+    <table class="table table-inverse" id="WordTable"></table>
+</div>
+
+
+<div class="popup-fade" style="display:none">
+    <div class="popup">
+        <a class="popup-close" href="#">Закрыть</a><br />
+        <div class="col-sm-12"><label class = "col-sm-5 control-label">Слово: </label> <input type="text" class = "form-control col-sm-7" id="txtWord"> </div>
+        <div class="col-sm-12"><label class = "col-sm-5 control-label">Тип слова: </label> <select id="txtTypeWord" class="form-control col-sm-7 TypeWord"></select></div>
+        <div class="col-sm-12"><label class = "col-sm-5 control-label">Род слова: </label> <select id="txtGenderWord" class="form-control col-sm-7 GenderWord"></select></div>
+        <div class="col-sm-12"><label class = "col-sm-5 control-label">Форма слова:</label> <select id="txtFormWord" class="form-control col-sm-7 FormsWord"></select> </div>
+        <div class="col-sm-12"><label class = "col-sm-5 control-label">Эмоциональный уровень:</label> <select id="txtEmotionLevelWord" class="form-control col-sm-7 EmoutionLevels"></select> </div>
+        <div class="col-sm-12"><label class = "col-sm-5 control-label">Синонимы: </label> <input type="text" class = "form-control col-sm-7" id="txtSynonimWord"> </div>
+        <div class="col-sm-12"><label class = "col-sm-5 control-label">Сочетаемые слова: </label> <input type="text" class = "form-control col-sm-7" id="txtMixWord"> </div>
+        <div class="col-sm-12"><label class = "col-sm-5 control-label">Несочетаемые слова: </label> <input type="text" class = "form-control col-sm-7" id="txtNotMixWord"></div>
+        <div class="col-sm-12"><label class = "col-sm-5 control-label">Активно: </label> <input type="checkbox" class = "form-control col-sm-7" id="txtActiveWord"></div>
+        <div class="col-sm-12"><button class="btn btn-default col-sm-3" onclick="UpdateWord()">Обновить</button></div>
+    </div>
+</div>
+
+
+<div>
+    <table class="col-sm-12 table table-hover SelectTable" id="WordSelectTable">
+        <tr>
+            <td><label>№:</label></td>
+            <td><label>Слово:</label></td>
+            <td><label>Тип слова:</label></td>
+            <td><label>Род слова:</label></td>
+            <td><label>Форма слова:</label></td>
+            <td><label>Эмоциональный уровень:</label></td>
+            <td><label>Синонимы:</label></td>
+            <td><label>Сочетаемые слова:</label></td>
+            <td><label>Несочетаемые слова:</label></td>
+            <td><label>Включено:</label></td>
+        </tr>
+        <tr>
+            <td><input id="RowFind" class="form-control" type="text"></td>
+            <td><input id="WordFind" class="form-control" type="text"></td>
+            <td><input id="TypeFind" class="form-control" type="text"></td>
+            <td><input id="GenderFind" class="form-control" type="text"></td>
+            <td><input id="FormFind" class="form-control" type="text"></td>
+            <td><input id="EmoutionFind" class="form-control" type="text"></td>
+            <td><input id="SynonimFind" class="form-control" type="text"></td>
+            <td><input id="MixFind" class="form-control" type="text"></td>
+            <td><input id="NotMixFind" class="form-control" type="text"></td>
+            <td></td>
+        </tr>
+    </table>
+</div>

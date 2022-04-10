@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Слова";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ConfigPhrasess</h2>
+<div><a href="#" class="aTable" onclick="tgAddTable()">Добавить конфигурации</a></div>
+<div class="tbAddTable" style="display:none">
+    <table>
+        <tr>
+            <td><label>Условие содержания:</label></td>
+            <td><label>Часть фразы:</label></td>
+            <td><label>Главное слово (подлежащее):</label></td>
+            <td><label>Форма предложения:</label></td>
+            <td><label>Эмоциональный уровень:</label></td>
+            <td><label>Тема предложения:</label></td>
+            <td><label>Разрешить распологать с предложениями данной темы:</label></td>
+            <td><label>Запретить распологать с предложениями данной темы:</label></td>
+            <td><label>Группа:</label></td>
+        </tr>
+        <tr>
+            <td>
+                <select id="strPhrasesContainsBox" class="Contains"></select>
+            </td>
+            <td><input id="strPhraseBox" type="text"></td>
+            <td><input id="GeneralStrPhraseBox" type="text"></td>
+            <td>
+                <select id="strPhraseFormBox" class="FormPhrase"></select>
+            </td>
+            <td>
+                <select id="EmoutionBox" class="EmoutionLevels"></select>
+            </td>
+            <td><select id="ThemePhraseBox" class="ThemesNews"></select></td>
+            <td><input id="MixThemePhraseBox" type="text"></td>
+            <td><input id="NotMixThemePhraseBox" type="text"></td>
+            <td><input id="GroupedBox" type="text"></td>
+        </tr>
+    </table>
+    <button class="btn btn-default" onclick="InsertConfigPhrase()">Добавить</button>
+</div>
+
+<div>
+    <label class="cntSelectTable">Всего записей: </label>
+</div>
+<div class="row">
+    <label>Показывать на странице: </label>
+    <select id="RowCount" class="form-control"></select>
+    <br />
+    <table class="table table-inverse" id="NewsTable"></table>
+</div>
+
+<div class="popup-fade" style="display:none">
+    <div class="popup">
+        <a class="popup-close" href="#">Закрыть</a><br />
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Условие содержания: </label> <select id="txtContainsPhrase" class="form-control col-sm-6 Contains"></select></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Часть фразы: </label> <input type="text" class="form-control col-sm-6" id="txtPartPhrase"> </div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Главное слово (подлежащее):</label> <input type="text" class="form-control col-sm-6" id="txtGeneralPhrase"> </div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Форма предложения: </label> <select id="txtFormPhrase" class="form-control col-sm-6 FormPhrase"></select></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Эмоциональный уровень: </label> <select id="txtEmotionLevel" class="form-control col-sm-6 EmoutionLevels"></select></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Тема предложения: </label> <input type="text" class="form-control col-sm-6" id="txtThemePhrase"></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Разрешить распологать с данной темой: </label> <input type="text" class="form-control col-sm-6" id="txtMixPhrase"></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Запретить распологать с данной темой: </label> <input type="text" class="form-control col-sm-6" id="txtNotMixPhrase"></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Группа: </label> <input type="text" class="form-control col-sm-6" id="txtGroupPhrase"></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Включено: </label> <input type="checkbox" class="form-control col-sm-6" id="txtActiveConfig"></div>
+        <div class="col-sm-12"><button class="btn btn-default col-sm-3" onclick="UpdateNews()">Обновить</button></div>
+    </div>
+</div>
+
+<div>
+    <table class="col-sm-12 table table-hover SelectTable" id="ConfigPhraseSelectTable">
+        <tr>
+            <td><label>№:</label></td>
+            <td><label>Условие содержания:</label></td>
+            <td><label>Часть фразы:</label></td>
+            <td><label>Главное слово (подлежащее):</label></td>
+            <td><label>Форма предложения:</label></td>
+            <td><label>Эмоциональный уровень:</label></td>
+            <td><label>Тема предложения:</label></td>
+            <td><label>Разрешить распологать с предложениями данной темы:</label></td>
+            <td><label>Запретить распологать с предложениями данной темы:</label></td>
+            <td><label>Группа:</label></td>
+            <td><label>Включено:</label></td>
+        </tr>
+        <tr>
+            <td><input id="RowFind" class="form-control" type="text"></td>
+            <td><input id="ContainsPhraseFind" class="form-control" type="text"></td>
+            <td><input id="PartPhraseFind" class="form-control" type="text"></td>
+            <td><input id="GeneraPhraseFind" class="form-control" type="text"></td>
+            <td><input id="FormPhraseFind" class="form-control" type="text"></td>
+            <td><input id="EmotionLevelFind" class="form-control" type="text"></td>
+            <td><input id="ThemePhraseFind" class="form-control" type="text"></td>
+            <td><input id="MixPhraseFind" class="form-control" type="text"></td>
+            <td><input id="NotMixPhraseFind" class="form-control" type="text"></td>          
+            <td><input id="GroupedFind" class="form-control" type="text"></td>
+            <td></td>
+        </tr>
+    </table>
+</div>

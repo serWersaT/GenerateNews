@@ -1,0 +1,163 @@
+﻿
+@{
+    ViewBag.Title = "Слова";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ConfigWords</h2>
+<div><a href="#" class="aTable" onclick="tgAddTable()">Добавить конфигурации</a></div>
+<div class="tbAddTable" style="display:none">
+    <table>
+        <tr>
+            <td><label>Условие содержания:</label></td>
+            <td><label>Часть слова:</label></td>
+            <td><label>Тип слова:</label></td>
+            <td><label>Род слова:</label></td>
+            <td><label>Форма слова:</label></td>
+            <td><label>Эмоциональный уровень:</label></td>
+            <td><label>Условие содержания соседнего разрешенного слова:</label></td>
+            <td><label>Часть соседнего разрешенного слова:</label></td>
+            <td><label>Условие содержания соседнего запрещенного слова:</label></td>
+            <td><label>Часть соседнего запрещенного слова:</label></td>
+            <td><label>Запрещено размещать по соседству с типом слова:</label></td>
+            <td><label>Запрещено размещать по соседству с родом слова:</label></td>
+            <td><label>Запрещено размещать по соседству с формой слова:</label></td>
+            <td><label>Разрешено размещать по соседству с типом слова:</label></td>
+            <td><label>Разрешено размещать по соседству с родом слова:</label></td>
+            <td><label>Разрешено размещать по соседству с родом слова:</label></td>
+            <td><label>Разрешено размещать по соседству с формой слова:</label></td>
+            <td><label>Группа:</label></td>
+            <td><label>Включено:</label></td>
+        </tr>
+        <tr>
+            <td>
+                <select id="strWordContainsBox" class="Contains"></select>
+            </td>
+            <td><input id="strWordBox" type="text"></td>
+            <td>
+                <select id="strWordTypeBox" class="TypeWord"></select>
+            </td>
+            <td>
+                <select id="strWordGenderBox" class="GenderWord"></select>
+            </td>
+            <td>
+                <select id="strWordFormBox" class="FormsWord"></select>
+            </td>
+            <td>
+                <select id="EmoutionBox" class="EmoutionLevels">
+                </select>
+            </td>
+            <td>
+                <select id="strMixWordContainsBox" class="Contains"></select>
+            </td>
+            <td><input id="strMixWordBox" type="text"></td>
+            <td>
+                <select id="strNotMixWordContainsBox" class="Contains"></select>
+            </td>
+            <td><input id="strNotMixWordBox" type="text"></td>
+            <td>
+                <select id="strNotMixWordTypeBox" class="TypeWord"></select>
+            </td>
+            <td>
+                <select id="strNotMixWordGenderBox" class="GenderWord"></select>
+            </td>
+            <td>
+                <select id="strMixWordFormBox" class="FormsWord"></select>
+            </td>
+            <td>
+                <select id="strMixWordTypeBox" class="TypeWord"></select>
+            </td>
+            <td>
+                <select id="strMixWordGenderBox" class="GenderWord"></select>
+            </td>
+            <td>
+                <select id="strMixWordFormBox" class="FormsWord"></select>
+            </td>
+            <td><input id="GroupedBox" type="text"></td>
+        </tr>
+    </table>
+    <button class="btn btn-default" onclick="InsertConfigWord()">Добавить</button>
+</div>
+
+<div>
+    <label class="cntSelectTable">Всего записей: </label>
+</div>
+<div class="row">
+    <label class="col-sm-3">Показывать на странице: </label>
+    <select id="RowCount" class="form-control"></select>
+    <table class="table table-inverse" id="NewsTable"></table>
+</div>
+
+<div class="popup-fade" style="display:none">
+    <div class="popup">
+        <a class="popup-close" href="#">Закрыть</a><br />
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Условие содержания: </label> <select id="txtContainsWord" class="form-control col-sm-6 Contains"></select></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Часть слова: </label> <input type="text" class="form-control col-sm-6" id="txtWord"> </div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Тип слова:</label> <select id="txtTypeWord" class="form-control col-sm-6 TypeWord"></select></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Род слова: </label> <select id="txtGenderWord" class="form-control col-sm-6 GenderWord"></select></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Форма слова: </label> <select id="txtFormWord" class="form-control col-sm-6 FormsWord"></select></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Эмоциональный уровень: </label> <select id="txtEmotionLevel" class="form-control col-sm-6 EmoutionLevels"></select> </div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Условие соседнего слова: </label> <input type="text" class="form-control col-sm-6" id="txtConfMixWord"></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Часть соседнего разрешенного слова: </label> <input type="text" class="form-control col-sm-6" id="txtMixWord"></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Условие соседнего слова: </label> <input type="text" class="form-control col-sm-6" id="txtConfNotMixWord"></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Часть соседнего запрещенного слова: </label> <input type="text" class="form-control col-sm-6" id="txtNotMixWord"></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Запрещено размещать тип слов: </label> <select id="txtNotMixType" class="form-control col-sm-6 TypeWord"></select></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Запрещено размещать род слов: </label> <select id="txtNotMixGender" class="form-control col-sm-6 GenderWord"></select></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Запрещено размещать форму слов: </label> <select id="txtNotMixForm" class="form-control col-sm-6 FormWord"></select></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Разрешено размещать тип слов: </label> <select id="txtMixType" class="form-control col-sm-6 TypeWord"></select></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Разрешено размещать род слов: </label> <select id="txtMixGender" class="form-control col-sm-6 GenderWord"></select></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Разрешено размещать форму слов: </label> <select id="txtMixForm" class="form-control col-sm-6 FormWord"></select></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Группа: </label> <input type="text" class="form-control col-sm-6" id="txtGrouped"></div>
+        <div class="col-sm-12"><label class="col-sm-6 control-label">Включено: </label> <input type="checkbox" class="form-control col-sm-6" id="txtActiveWordConfig"></div>
+        <div class="col-sm-12"><button class="btn btn-default col-sm-3" onclick="UpdateConfigWord()">Обновить</button></div>
+    </div>
+</div>
+
+
+<div>
+    <table class="col-sm-12 table table-hover SelectTable" id="ConfigWordSelectTable">
+        <tr>
+            <td><label>№:</label></td>
+            <td><label>Условие содержания:</label></td>
+            <td><label>Часть слова:</label></td>
+            <td><label>Тип слова:</label></td>
+            <td><label>Род слова:</label></td>
+            <td><label>Форма слова:</label></td>
+            <td><label>Эмоциональный уровень:</label></td>
+            <td><label>Условие содержания соседнего разрешенного слова:</label></td>
+            <td><label>Часть соседнего разрешенного слова:</label></td>
+            <td><label>Условие содержания соседнего запрещенного слова:</label></td>
+            <td><label>Часть соседнего запрещенного слова:</label></td>
+            <td><label>Запрещено размещать по соседству с типом слова:</label></td>
+            <td><label>Запрещено размещать по соседству с родом слова:</label></td>
+            <td><label>Запрещено размещать по соседству с формой слова:</label></td>
+            <td><label>Разрешено размещать по соседству с типом слова:</label></td>
+            <td><label>Разрешено размещать по соседству с родом слова:</label></td>
+            <td><label>Разрешено размещать по соседству с формой слова:</label></td>
+            <td><label>Группа:</label></td>
+            <td><label>Включено:</label></td>
+        </tr>
+        <tr>
+            <td><input id="RowFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="ContainsWordFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="WordFindFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="TypeWordFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="GenderWordFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="FormWordFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="EmotionLevelFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="ContainsMixWordFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="WordMixFindFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="ContainsNotMixWordFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="WordNotMixFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="WordNotMixTypeFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="WordNotMixGenderFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="WordNotMixFormFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="WordMixTypeFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="WordMixGenderFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="WordMixFormFind" class="form-control FindConfWord" type="text"></td>
+            <td><input id="GroupedFind" class="form-control FindConfWord" type="text"></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+
